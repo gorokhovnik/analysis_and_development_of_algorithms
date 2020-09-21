@@ -1,5 +1,6 @@
 import numpy as np
 from functools import partial
+import matplotlib.pyplot as plt
 
 np.random.seed(16777216)
 
@@ -279,9 +280,57 @@ def nelder_mead(f,
     return n, i, pl, f_pl
 
 
-print(exhaustive_search_2dim(f21))
-print(gauss(f21))
-print(nelder_mead(f21))
-print(exhaustive_search_2dim(f22))
-print(gauss(f22))
-print(nelder_mead(f22))
+es1 = exhaustive_search_2dim(f21)
+print(es1)
+g1 = gauss(f21)
+print(g1)
+nm1 = nelder_mead(f21)
+print(nm1)
+es2 = exhaustive_search_2dim(f22)
+print(es2)
+g2 = gauss(f22)
+print(g2)
+nm2 = nelder_mead(f22)
+print(nm2)
+
+
+plt.title('Exhaustive search // Linear', fontsize=20)
+plt.plot(y, color='red', label='experimental')
+plt.plot([es1[2][0] * x_ + es1[2][1] for x_ in x], color='green', linewidth=4, label='theoretical')
+plt.legend(loc='upper left')
+plt.show()
+
+
+plt.title('Exhaustive search // Rational', fontsize=20)
+plt.plot(y, color='red', label='experimental')
+plt.plot([es2[2][0] / (1 + es2[2][1] * x_) for x_ in x], color='green', linewidth=4, label='theoretical')
+plt.legend(loc='upper left')
+plt.show()
+
+
+plt.title('Gauss // Linear', fontsize=20)
+plt.plot(y, color='red', label='experimental')
+plt.plot([g1[2][0] * x_ + g1[2][1] for x_ in x], color='green', linewidth=4, label='theoretical')
+plt.legend(loc='upper left')
+plt.show()
+
+
+plt.title('Gauss // Rational', fontsize=20)
+plt.plot(y, color='red', label='experimental')
+plt.plot([g2[2][0] / (1 + g2[2][1] * x_) for x_ in x], color='green', linewidth=4, label='theoretical')
+plt.legend(loc='upper left')
+plt.show()
+
+
+plt.title('Nelder-Mead // Linear', fontsize=20)
+plt.plot(y, color='red', label='experimental')
+plt.plot([nm1[2][0] * x_ + nm1[2][1] for x_ in x], color='green', linewidth=4, label='theoretical')
+plt.legend(loc='upper left')
+plt.show()
+
+
+plt.title('Nelder_Mead // Rational', fontsize=20)
+plt.plot(y, color='red', label='experimental')
+plt.plot([nm2[2][0] / (1 + nm2[2][1] * x_) for x_ in x], color='green', linewidth=4, label='theoretical')
+plt.legend(loc='upper left')
+plt.show()
