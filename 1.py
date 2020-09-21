@@ -48,59 +48,59 @@ for i in range(N + 1):
     tmp = v[:i]
     experimental_time2 += [timeit(lambda: foo2(tmp), number=5)]
 
-# theoretical_time2 = [experimental_time2[-1] / N * n for n in range(N + 1)]
-#
-# plt.title('sum of elements', fontsize=20)
-# plt.xlabel('Number of elements')
-# plt.ylabel('Running time')
-# plt.plot(experimental_time2, color='red', label='experimental')
-# plt.plot(theoretical_time2, color='green', linewidth=4, label='theoretical')
-# plt.legend(loc='upper left')
-# plt.show()
-#
-#
-# # linear time function (prod)
-# def foo3(v):
-#     return np.prod(v)
-#
-#
-# experimental_time3 = []
-#
-# for i in range(N + 1):
-#     tmp = v[:i]
-#     experimental_time3 += [timeit(lambda: foo3(tmp), number=5)]
-#
-# theoretical_time3 = [experimental_time3[-1] / N * n for n in range(N + 1)]
-#
-# plt.title('prod of elements', fontsize=20)
-# plt.xlabel('Number of elements')
-# plt.ylabel('Running time')
-# plt.plot(experimental_time3, color='red', label='experimental')
-# plt.plot(theoretical_time3, color='green', linewidth=4, label='theoretical')
-# plt.legend(loc='upper left')
-# plt.show()
-#
-#
-# # linear time function (polynom)
-# def foo4(v):
-#     return np.poly1d(v, 1.5)
-#
-#
-# experimental_time4 = []
-#
-# for i in range(N + 1):
-#     tmp = v[:i]
-#     experimental_time4 += [timeit(lambda: foo4(tmp), number=5)]
-#
-# theoretical_time4 = [experimental_time4[-1] / N * n for n in range(N + 1)]
-#
-# plt.title('polynom', fontsize=20)
-# plt.xlabel('Number of elements')
-# plt.ylabel('Running time')
-# plt.plot(experimental_time4, color='red', label='experimental')
-# plt.plot(theoretical_time4, color='green', linewidth=4, label='theoretical')
-# plt.legend(loc='upper left')
-# plt.show()
+theoretical_time2 = [experimental_time2[-1] / N * n for n in range(N + 1)]
+
+plt.title('sum of elements', fontsize=20)
+plt.xlabel('Number of elements')
+plt.ylabel('Running time')
+plt.plot(experimental_time2, color='red', label='experimental')
+plt.plot(theoretical_time2, color='green', linewidth=4, label='theoretical')
+plt.legend(loc='upper left')
+plt.show()
+
+
+# linear time function (prod)
+def foo3(v):
+    return np.prod(v)
+
+
+experimental_time3 = []
+
+for i in range(N + 1):
+    tmp = v[:i]
+    experimental_time3 += [timeit(lambda: foo3(tmp), number=5)]
+
+theoretical_time3 = [experimental_time3[-1] / N * n for n in range(N + 1)]
+
+plt.title('prod of elements', fontsize=20)
+plt.xlabel('Number of elements')
+plt.ylabel('Running time')
+plt.plot(experimental_time3, color='red', label='experimental')
+plt.plot(theoretical_time3, color='green', linewidth=4, label='theoretical')
+plt.legend(loc='upper left')
+plt.show()
+
+
+# linear time function (polynom)
+def foo4(v):
+    return np.poly1d(v, 1.5)
+
+
+experimental_time4 = []
+
+for i in range(N + 1):
+    tmp = v[:i]
+    experimental_time4 += [timeit(lambda: foo4(tmp), number=5)]
+
+theoretical_time4 = [experimental_time4[-1] / N * n for n in range(N + 1)]
+
+plt.title('polynom', fontsize=20)
+plt.xlabel('Number of elements')
+plt.ylabel('Running time')
+plt.plot(experimental_time4, color='red', label='experimental')
+plt.plot(theoretical_time4, color='green', linewidth=4, label='theoretical')
+plt.legend(loc='upper left')
+plt.show()
 
 
 # linear time function (Horner)
