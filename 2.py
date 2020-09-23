@@ -202,7 +202,7 @@ def nelder_mead(f,
                 gamma=2):
     n = 3
     i = 1
-    p1, p2, p3 = (x_min, y_min), (x_min, (y_min + y_max) / gamma), ((x_min + x_max) / gamma, y_min)
+    p1, p2, p3 = (x_min, y_min), (x_min, y_max), (x_max, y_min)
     f_p1, f_p2, f_p3 = f(p1[0], p1[1]), f(p2[0], p2[1]), f(p3[0], p3[1])
 
     if f_p1 > f_p2 > f_p3:
