@@ -1,22 +1,7 @@
 import numpy as np
-from scipy.optimize import minimize, fmin_cg, least_squares, leastsq
+from scipy.optimize import minimize, fmin_cg, least_squares
 import matplotlib.pyplot as plt
-
-
-def gd(f,
-       x0,
-       ff,
-       tol=0.001):
-    prev_z = np.inf
-    z = f(x0)
-    n = 1
-    while prev_z - z > tol:
-        d = ff(x0)
-        x0[0], x0[1] = x0[0] - d[0] * tol * 7, x0[1] - d[1] * tol * 7
-        prev_z = z
-        z = f(x0)
-        n += 1
-    return x0, n, z
+from algo_lib import gd
 
 
 np.random.seed(16777216)
