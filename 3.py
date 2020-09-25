@@ -3,7 +3,6 @@ from scipy.optimize import minimize, fmin_cg, least_squares
 import matplotlib.pyplot as plt
 from algo_lib import gd
 
-
 np.random.seed(16777216)
 
 alpha, beta = np.random.random(), np.random.random()
@@ -82,50 +81,20 @@ print((lm1.x.tolist(), lm1.nfev, f1(lm1.x)))
 lm2 = least_squares(funs2, [0, 0], method='lm', gtol=0.001)
 print((lm2.x.tolist(), lm2.nfev, f2(lm2.x)))
 
-plt.title('GD // Linear', fontsize=20)
+plt.title('Linear', fontsize=20)
 plt.plot(y, color='red', label='experimental')
-plt.plot([gd1[0][0] * x_ + gd1[0][1] for x_ in x], color='green', linewidth=4, label='theoretical')
+plt.plot([gd1[0][0] * x_ + gd1[0][1] for x_ in x], color='cyan', linewidth=10.5, label='GD')
+plt.plot([cg1[0] * x_ + cg1[1] for x_ in x], color='magenta', linewidth=7.5, label='CGD')
+plt.plot([new1.x[0] * x_ + new1.x[1] for x_ in x], color='yellow', linewidth=4.5, label='Newton')
+plt.plot([lm1.x[0] * x_ + lm1.x[1] for x_ in x], color='blue', linewidth=1.5, label='LMA')
 plt.legend(loc='upper left')
 plt.show()
 
-plt.title('GD // Rational', fontsize=20)
+plt.title('Rational', fontsize=20)
 plt.plot(y, color='red', label='experimental')
-plt.plot([gd2[0][0] / (1 + gd2[0][1] * x_) for x_ in x], color='green', linewidth=4, label='theoretical')
-plt.legend(loc='upper left')
-plt.show()
-
-plt.title('CGD // Linear', fontsize=20)
-plt.plot(y, color='red', label='experimental')
-plt.plot([cg1[0] * x_ + cg1[1] for x_ in x], color='green', linewidth=4, label='theoretical')
-plt.legend(loc='upper left')
-plt.show()
-
-plt.title('CGD // Rational', fontsize=20)
-plt.plot(y, color='red', label='experimental')
-plt.plot([cg2[0] / (1 + cg2[1] * x_) for x_ in x], color='green', linewidth=4, label='theoretical')
-plt.legend(loc='upper left')
-plt.show()
-
-plt.title('Newton // Linear', fontsize=20)
-plt.plot(y, color='red', label='experimental')
-plt.plot([new1.x[0] * x_ + new1.x[1] for x_ in x], color='green', linewidth=4, label='theoretical')
-plt.legend(loc='upper left')
-plt.show()
-
-plt.title('Newton // Rational', fontsize=20)
-plt.plot(y, color='red', label='experimental')
-plt.plot([new2.x[0] / (1 + new2.x[1] * x_) for x_ in x], color='green', linewidth=4, label='theoretical')
-plt.legend(loc='upper left')
-plt.show()
-
-plt.title('LMA // Linear', fontsize=20)
-plt.plot(y, color='red', label='experimental')
-plt.plot([lm1.x[0] * x_ + lm1.x[1] for x_ in x], color='green', linewidth=4, label='theoretical')
-plt.legend(loc='upper left')
-plt.show()
-
-plt.title('LMA // Rational', fontsize=20)
-plt.plot(y, color='red', label='experimental')
-plt.plot([lm2.x[0] / (1 + lm2.x[1] * x_) for x_ in x], color='green', linewidth=4, label='theoretical')
+plt.plot([gd2[0][0] / (1 + gd2[0][1] * x_) for x_ in x], color='cyan', linewidth=10.5, label='GD')
+plt.plot([cg2[0] / (1 + cg2[1] * x_) for x_ in x], color='magenta', linewidth=7.5, label='CGD')
+plt.plot([new2.x[0] / (1 + new2.x[1] * x_) for x_ in x], color='yellow', linewidth=4.5, label='Newton')
+plt.plot([lm2.x[0] / (1 + lm2.x[1] * x_) for x_ in x], color='blue', linewidth=1.5, label='LMA')
 plt.legend(loc='upper left')
 plt.show()
